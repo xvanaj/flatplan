@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="cs">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#284d43"><title>Flatplan · Moje rekonstrukce</title><link rel="stylesheet" href="./style.css"></head>
+<body>
+  <aside class="sidebar">
+    <a class="brand" href="#overview"><span class="brand-icon">⌂</span> flatplan<span class="brand-dot">.</span></a>
+    <div class="project"><span class="eyebrow">MŮJ PROJEKT</span><strong>Byt na Kotlářské</strong><span>Jeden byt. Dvě části k pronájmu.</span></div>
+    <nav aria-label="Hlavní navigace">
+      <a href="#overview" data-nav="overview"><span>▦</span> Přehled</a>
+      <a href="#rooms" data-nav="rooms"><span>⌑</span> Místnosti <small>8</small></a>
+      <a href="#materials" data-nav="materials"><span>▧</span> Materiály a odkazy</a>
+      <a href="#budget" data-nav="budget"><span>◷</span> Rozpočet</a>
+      <a href="#decisions" data-nav="decisions"><span>☷</span> K rozhodnutí</a>
+      <a href="#plans" data-nav="plans"><span>▱</span> Výkresy a fotky</a>
+    </nav>
+    <div class="sidebar-bottom"><span class="save-dot"></span><span id="save-status">Ukládá se v tomto prohlížeči</span><p>Svůj plán si pravidelně zálohuj.</p><button class="text-button" id="export">↓ Stáhnout zálohu</button><button class="text-button" id="import">↑ Obnovit ze zálohy</button><input id="import-file" type="file" accept="application/json,.json" hidden></div>
+  </aside>
+  <div class="workspace"><header class="topbar"><span>Moje rekonstrukce <span class="slash">/</span> <span id="breadcrumb">Přehled</span></span><span class="project-tag">● V přípravě</span></header><main id="app"></main><footer>Flatplan · Plán podle tvého dokumentu <span>Ceny doplňuješ podle skutečných nabídek.</span></footer></div>
+  <dialog id="editor"><form id="edit-form"><div class="dialog-head"><h2 id="dialog-title"></h2><button type="button" class="icon-button" id="close-dialog" aria-label="Zavřít">×</button></div><div id="form-fields"></div><div class="dialog-actions"><button type="button" class="button secondary" id="cancel-dialog">Zrušit</button><button class="button" type="submit">Uložit</button></div></form></dialog>
+  <dialog id="lightbox"><button class="icon-button" id="close-lightbox" aria-label="Zavřít obrázek">×</button><img id="large-image" alt=""><p id="image-caption"></p></dialog>
+  <div id="toast" role="status"></div><script type="module" src="./app.js"></script>
+</body></html>

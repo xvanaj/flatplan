@@ -1,0 +1,1 @@
+› podivej se na document v docs slozce. Mam tam muj navrh na rozdeleni bytu na dva - bude to na katastru jeden byt ale chci ho rozdelit neoficialne na dva aby se lepe pronajimal. Udelej mne webovku kde to bude vsechno hezky videt. Bude tam po minstnostech co je treba a bude moznost tam pridavat odkazy na material apod (kachlicky, vana...) apod. Vymysli sam jak to udelat

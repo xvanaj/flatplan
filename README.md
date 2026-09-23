@@ -1,10 +1,10 @@
 # Flatplan
 
-Osobní plán rekonstrukce podle `docs/Rekonstrukce - plan.docx`. Osm místností, práce, materiály s odkazy, rozpočet, rozhodnutí a původní obrazové podklady. Česká responzivní webová aplikace bez instalace balíčků a placených služeb.
+Osobní plán rekonstrukce podle `docs/Rekonstrukce - plan.docx`. Osm místností, práce, materiály s odkazy, rozpočet, rozhodnutí a původní obrazové podklady. Česká responzivní webová aplikace. Lokální režim nepotřebuje externí služby; sdílení používá Supabase.
 
 ## Spuštění
 
-Potřebuje Node.js 20 nebo novější. V kořeni projektu spusť `npm start` a otevři http://localhost:4180. Testy: `npm test`.
+Potřebuje Node.js 20 nebo novější. V kořeni projektu spusť `npm start` a otevři http://localhost:4180. Testy: nejprve `npm ci`, potom `npm test` (vývojové závislosti pro ověření databáze a rozhraní; web je nepotřebuje).
 
 Jiný port lze nastavit v PowerShellu: `$env:PORT=4181; npm start`. Pokud je port obsazený, server vypíše srozumitelnou zprávu. Při změně portu se uložená data prohlížeče nepřenesou automaticky: na původní adrese stáhni zálohu a na nové ji obnov.
 
@@ -14,7 +14,7 @@ Jiný port lze nastavit v PowerShellu: `$env:PORT=4181; npm start`. Pokud je por
 - U materiálu ulož odkaz, jednotkovou cenu a množství. Alternativy ve stavu „Tip k porovnání“ se nezapočítávají. Vybrané a koupené položky ano, každá jednou.
 - Cena práce je celková cena této položky. Materiál zahrnutý v nabídce nepřidávej znovu do rozpočtu. U návazností předsíně a komory je potřeba nacenit společné podlahy jen jednou.
 - Ceny jsou záměrně prázdné, dokud je nedoplníš. Částka nahoře není odhad ceny celé rekonstrukce. Rezerva je standardně nastavená na upravitelných 15 %.
-- Data se ukládají do localStorage tohoto prohlížeče na této adrese. Nesynchronizují se mezi zařízeními. Vymazání dat prohlížeče může plán smazat; používej „Stáhnout zálohu“. Zálohu JSON lze obnovit v jiném prohlížeči. Obnova nahrazuje aktuální data až po potvrzení.
+- Bez sdílecího odkazu se data ukládají do localStorage tohoto prohlížeče. Po připojení Supabase klikni na „Sdílet plán“: aktuální data se přenesou online a každý s vytvořeným odkazem může společný plán upravovat bez přihlášení. Změny různých polí se sloučí; konflikt stejného pole vyřešíš výběrem hodnot. Používej také „Stáhnout zálohu“. Obnova nahrazuje aktuální data až po potvrzení a ve sdíleném plánu se přenáší ostatním.
 
 ## Rozsah a doporučené pořadí
 
@@ -39,6 +39,10 @@ Web je statický; na GitHub Pages nepotřebuje Node server. Relativní cesty pod
 
 Nasazení je úmyslně ruční: samotný push web nezveřejní. Publikované výkresy a fotografie nemají v aplikaci ochranu přihlášením. Soubor Word a ostatní soubory mimo `public` se nenahrávají do Pages, ale mohou být dostupné v repozitáři podle jeho viditelnosti.
 
-Vlastní práce, ceny a poznámky zůstávají v localStorage návštěvníkova prohlížeče, neukládají se do GitHubu. Pro přenos z localhostu na GitHub Pages použij export a import zálohy.
+Vlastní práce, ceny a poznámky se neukládají do GitHubu. Lokální plán zůstává v prohlížeči; sdílený plán se ukládá do Supabase. Pro přenos místního plánu z localhostu na GitHub Pages použij export a import zálohy.
+
+## Sdílení mezi zařízeními a lidmi
+
+Jednorázové nastavení databáze a proměnných pro nasazení: [docs/sdileni.md](docs/sdileni.md). SQL: [supabase/setup.sql](supabase/setup.sql). Bez připojené databáze funguje web dál lokálně. Přístup ke sdílenému plánu má každý držitel tajného odkazu, není potřeba účet.
 
 Postup vychází z [dokumentace GitHub Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages).

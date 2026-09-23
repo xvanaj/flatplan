@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="cs">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#284d43"><title>Flatplan · Moje rekonstrukce</title><link rel="stylesheet" href="./style.css"></head>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="referrer" content="no-referrer"><meta name="theme-color" content="#284d43"><title>Flatplan · Moje rekonstrukce</title><link rel="stylesheet" href="./style.css"></head>
 <body>
   <aside class="sidebar">
     <a class="brand" href="#overview"><span class="brand-icon">⌂</span> flatplan<span class="brand-dot">.</span></a>
@@ -13,10 +13,12 @@
       <a href="#decisions" data-nav="decisions"><span>☷</span> K rozhodnutí</a>
       <a href="#plans" data-nav="plans"><span>▱</span> Výkresy a fotky</a>
     </nav>
-    <div class="sidebar-bottom"><span class="save-dot"></span><span id="save-status">Ukládá se v tomto prohlížeči</span><p>Svůj plán si pravidelně zálohuj.</p><button class="text-button" id="export">↓ Stáhnout zálohu</button><button class="text-button" id="import">↑ Obnovit ze zálohy</button><input id="import-file" type="file" accept="application/json,.json" hidden></div>
+    <div class="sidebar-bottom"><span class="save-dot"></span><span id="save-status" role="status">Ukládá se v tomto prohlížeči</span><p id="storage-help">Svůj plán si pravidelně zálohuj.</p><button class="text-button" id="share">↗ Sdílet plán</button><button class="text-button" id="retry-sync" hidden>Zkusit synchronizaci</button><button class="text-button" id="export">↓ Stáhnout zálohu</button><button class="text-button" id="import">↑ Obnovit ze zálohy</button><input id="import-file" type="file" accept="application/json,.json" hidden></div>
   </aside>
   <div class="workspace"><header class="topbar"><span>Moje rekonstrukce <span class="slash">/</span> <span id="breadcrumb">Přehled</span></span><span class="project-tag">● V přípravě</span></header><main id="app"></main><footer>Flatplan · Plán podle tvého dokumentu <span>Ceny doplňuješ podle skutečných nabídek.</span></footer></div>
   <dialog id="editor"><form id="edit-form"><div class="dialog-head"><h2 id="dialog-title"></h2><button type="button" class="icon-button" id="close-dialog" aria-label="Zavřít">×</button></div><div id="form-fields"></div><div class="dialog-actions"><button type="button" class="button secondary" id="cancel-dialog">Zrušit</button><button class="button" type="submit">Uložit</button></div></form></dialog>
   <dialog id="lightbox"><button class="icon-button" id="close-lightbox" aria-label="Zavřít obrázek">×</button><img id="large-image" alt=""><p id="image-caption"></p></dialog>
+  <dialog id="share-dialog" aria-labelledby="share-title"><div class="dialog-head"><h2 id="share-title">Sdílet plán</h2><button class="icon-button" id="close-share" aria-label="Zavřít">×</button></div><p>Kdokoliv s tímto odkazem může plán zobrazit a upravovat bez přihlášení. Posílej ho jen lidem, se kterými chceš plán sdílet.</p><label>Odkaz na společný plán<input id="share-link" readonly></label><button class="button" id="copy-share">Zkopírovat odkaz</button></dialog>
+  <dialog id="conflict-dialog" aria-labelledby="conflict-title"><h2 id="conflict-title">Někdo upravil stejné údaje</h2><p id="conflict-count"></p><ul id="conflict-details"></ul><p>Vyber, které hodnoty ponechat u sporných údajů. Před výběrem si můžeš stáhnout svoji rozpracovanou verzi.</p><button class="text-button" id="conflict-backup">↓ Stáhnout moji verzi</button><div class="dialog-actions"><button class="button secondary" id="conflict-remote">Ponechat online hodnoty</button><button class="button" id="conflict-local">Ponechat moje hodnoty</button></div></dialog>
   <div id="toast" role="status"></div><script type="module" src="./app.js"></script>
 </body></html>
